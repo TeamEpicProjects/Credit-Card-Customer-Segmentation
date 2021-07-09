@@ -1,1 +1,1 @@
-# Credit_Card_Customer_Segmentation
+# Credit Card Customer Segmentation
