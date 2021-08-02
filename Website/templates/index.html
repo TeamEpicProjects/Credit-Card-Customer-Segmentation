@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <title>Credit Card Customer Segmentation</title>
+</head>
+
+<style>
+  .titlestyle {
+    background-color: white;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .title {
+    background-color: white;
+    text-align: center;
+  }
+
+  .formstyle {
+    padding: 20px 20px;
+  }
+</style>
+
+<body class="bg-light">
+
+  <header class="bd-header bg-dark py-3 d-flex align-items-stretch border-bottom border-dark">
+    <div class="container-fluid d-flex align-items-center">
+      <h1 class="d-flex align-items-center fs-4 text-white mb-0">
+        Packt.
+      </h1>
+      <a class="ms-auto link-light" hreflang="ar"><button type="button" class="btn btn-light">TeamEpic</button></a>
+
+    </div>
+  </header>
+
+  <main class="container size">
+    <div class="d-flex align-items-center p-3 my-3 rounded shadow-sm titlestyle">
+      <div class="lh-1">
+        <h1 class="h2 mb-0 text-black lh-1">Credit Card Customer Segmentation</h1>
+      </div>
+    </div>
+
+    <div class="my-3 p-3 bg-body rounded shadow-sm">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+
+            <input class="form-control title" type="text" value="Model 1" aria-label="readonly input example" readonly>
+            <form class="formstyle" action="{{ url_for('predict')}}" method="post">
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">Balance</span>
+                <span class="input-group-text">$</span>
+                <input type="text" name="BALANCE" class="form-control" required="required">
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">Purchases</span>
+                <span class="input-group-text">$</span>
+                <input type="text" name="PURCHASES" class="form-control" required="required">
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">Installments Purchases</span>
+                <span class="input-group-text">$</span>
+                <input type="text" name="INSTALLMENTS_PURCHASES" class="form-control" required="required">
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">Cash Advanced</span>
+                <span class="input-group-text">$</span>
+                <input type="text" name="CASH_ADVANCE" class="form-control" required="required">
+              </div>
+
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">Credit Limit</span>
+                <span class="input-group-text">$</span>
+                <input type="text" name="CREDIT_LIMIT" class="form-control" required="required">
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">Payment</span>
+                <span class="input-group-text">$</span>
+                <input type="text" name="PAYMENTS" class="form-control" required="required">
+              </div>
+              <button type="submit" class="btn btn-primary ">Predict</button>
+            </form>
+
+          </div>
+          <div class="col">
+
+            <input class="form-control title" type="text" value="Model 2" aria-label="readonly input example" readonly>
+            <form class="formstyle" action="{{ url_for('ModelSecond')}}" method="post">
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">Balance</span>
+                <span class="input-group-text">$</span>
+                <input type="text" name="BALANCE" class="form-control" required="required">
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">Purchases</span>
+                <span class="input-group-text">$</span>
+                <input type="text" name="PURCHASES" class="form-control" required="required">
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">Installments Purchases</span>
+                <span class="input-group-text">$</span>
+                <input type="text" name="INSTALLMENTS_PURCHASES" class="form-control" required="required">
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">Cash Advanced</span>
+                <span class="input-group-text">$</span>
+                <input type="text" name="CASH_ADVANCE" class="form-control" required="required">
+              </div>
+
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">Credit Limit</span>
+                <span class="input-group-text">$</span>
+                <input type="text" name="CREDIT_LIMIT" class="form-control" required="required">
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">Payment</span>
+                <span class="input-group-text">$</span>
+                <input type="text" name="PAYMENTS" class="form-control" required="required">
+              </div>
+
+              <button type="submit" class="btn btn-primary ">Predict</button>
+            </form>
+
+          </div>
+
+
+          <div class="col">
+            <input class="form-control title" type="text" value="Model 3" aria-label="readonly input example" readonly>
+
+            <form class="formstyle" action="{{ url_for('ModelThird')}}" method="post">
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">Balance</span>
+                <span class="input-group-text">$</span>
+                <input type="text" name="BALANCE" class="form-control" required="required">
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">Max Purchases</span>
+                <span class="input-group-text">$</span>
+                <input type="text" name="ONEOFF_PURCHASES" class="form-control" required="required">
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">Installments Purchases</span>
+                <span class="input-group-text">$</span>
+                <input type="text" name="INSTALLMENTS_PURCHASES" class="form-control" required="required">
+              </div>
+
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">Credit Limit</span>
+                <span class="input-group-text">$</span>
+                <input type="text" name="CREDIT_LIMIT" class="form-control" required="required">
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">Payment</span>
+                <span class="input-group-text">$</span>
+                <input type="text" name="PAYMENTS" class="form-control" required="required">
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">Total Transaction</span>
+                <span class="input-group-text">$</span>
+                <input type="text" name="TOT_TRANSACTION" class="form-control" required="required">
+              </div>
+
+              <button type="submit" class="btn btn-primary ">Predict</button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+    <div class="my-3 p-3 bg-body rounded shadow-sm">
+      <h6 class="border-bottom pb-2 mb-0">Predictions</h6>
+      <div class="d-flex text-muted pt-3">
+        <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
+          xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
+          preserveAspectRatio="xMidYMid slice" focusable="false">
+          <title>Placeholder</title>
+          <rect width="100%" height="100%" fill="#007bff" /><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
+        </svg>
+
+        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+          <div class="d-flex justify-content-between">
+            <strong class="text-gray-dark">Model 1</strong>
+          </div>
+          <span class="d-block"  style="font-size: 17px;"> {{ prediction_ModelOne }}</span>
+          <p style="font-size: 15px;">{{InsightOne}}</p>
+        </div>
+
+      </div>
+
+      <div class="d-flex text-muted pt-3">
+        <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
+          xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
+          preserveAspectRatio="xMidYMid slice" focusable="false">
+          <title>Placeholder</title>
+          <rect width="100%" height="100%" fill="#007bff" /><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
+        </svg>
+
+        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+          <div class="d-flex justify-content-between">
+            <strong class="text-gray-dark">Model 2</strong>
+          </div>
+          <span class="d-block" style="font-size: 17px;">{{ prediction_ModelSecond }}</span>
+          <p style="font-size: 15px;">{{InsightSecond}}</p>
+        </div>
+      </div>
+      <div class="d-flex text-muted pt-3">
+        <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
+          xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
+          preserveAspectRatio="xMidYMid slice" focusable="false">
+          <title>Placeholder</title>
+          <rect width="100%" height="100%" fill="#007bff" /><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
+        </svg>
+        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+          <div class="d-flex justify-content-between">
+            <strong class="text-gray-dark">Model 3</strong>
+          </div>
+          <span class="d-block"  style="font-size: 17px;">{{ prediction_ModelThird }}</span>
+          <p style="font-size: 15px;">{{InsightThird}}</p>
+        </div>
+      </div>
+
+
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{{url_for('static', filename='modelOne.png')}}" class="d-block w-100" alt="Model 1">
+          </div>
+          <div class="carousel-item">
+            <img src="{{url_for('static', filename='modelSecond.png')}}" class="d-block w-100" alt="Model 2">
+          </div>
+          <div class="carousel-item">
+            <img src="{{url_for('static', filename='modelThird.png')}}" class="d-block w-100" alt="Model 3">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+
+    </div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Main Input For Receiving Query to our ML -->
+<!-- <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="experience" placeholder="Experience" required="required" />
+        <input type="text" name="test_score" placeholder="Test Score" required="required" />
+		<input type="text" name="interview_score" placeholder="Interview Score" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}  -->
